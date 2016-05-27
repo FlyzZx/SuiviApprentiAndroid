@@ -16,7 +16,7 @@ public class SuiviApprenti extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Persistance des cookies
+        //Persistance des cookies httpurlconnection
         CookieManager cookieManager = new CookieManager();
         CookieHandler.setDefault(cookieManager);
     }
