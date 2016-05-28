@@ -20,50 +20,57 @@ import java.net.URL;
 public class SimpleHTTPGet extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
-        InputStream is = null;
-        String contentAsString = null;
-        // Only display the first 500 characters of the retrieved
-        // web page content.
-        int len = 20000;
+        URL url = null;
+        BufferedReader reader = null;
+        StringBuilder stringBuilder = null;
 
-        try {
-            URL url = new URL(params[0]);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("GET");
-            conn.setDoInput(true);
-            // Starts the query
-            conn.connect();
-            int response = conn.getResponseCode();
+        try
+        {
+            // create the HttpURLConnection
+            url = new URL(params[0]);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            is = conn.getInputStream();
+            // just want to do an HTTP GET here
+            connection.setRequestMethod("GET");
 
-            // Convert the InputStream into a string
-            contentAsString = readIt(is, len);
-            conn.disconnect();
+            // uncomment this if you want to write output to this url
+            //connection.setDoOutput(true);
 
-            // Makes sure that the InputStream is closed after the app is
-            // finished using it.
-        } catch (MalformedURLException e) {
+            // give it 15 seconds to respond
+            connection.setReadTimeout(15*1000);
+            connection.connect();
+
+            // read the output from the server
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            stringBuilder = new StringBuilder();
+
+            String line = null;
+            while ((line = reader.readLine()) != null)
+            {
+                stringBuilder.append(line + "\n");
+            }
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+        }
+        finally
+        {
+            // close the reader; this can throw an exception too, so
+            // wrap it in another try/catch block.
+            if (reader != null)
+            {
+                try
+                {
+                    reader.close();
+                }
+                catch (IOException ioe)
+                {
+                    ioe.printStackTrace();
                 }
             }
         }
-
-        return contentAsString;
+        return stringBuilder.toString();
     }
 
     // Reads an InputStream and converts it to a String.

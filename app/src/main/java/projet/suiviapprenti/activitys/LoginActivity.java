@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 try {
                     String ret = new SimpleHTTPGet().execute("http://192.168.0.6:8080/testRestAndroid/rest/login/" + edtMail.getText() + "/" + edtPassword.getText()).get(); //Connexion
                     Snackbar.make(v, ret, Snackbar.LENGTH_LONG).show();
-                    Intent intent = getIntent();
-
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -51,8 +49,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.button:
                 try {
-                    String ret = new SimpleHTTPGet().execute("http://192.168.0.6:8080/testRestAndroid/rest/login/isConnected").get(); //Connexion
-                    Snackbar.make(v, ret, Snackbar.LENGTH_LONG).show();
+                    String jsonProfil = new SimpleHTTPGet().execute("http://192.168.0.6:8080/testRestAndroid/rest/profil/infosPersonnelles").get();
+                    JSONDataParse parser = new JSONDataParse();
+                    Apprenti app = parser.getApprenti(jsonProfil);
+                    Snackbar.make(v, jsonProfil, Snackbar.LENGTH_LONG).show();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
