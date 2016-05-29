@@ -59,7 +59,7 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
 
         nomEntreprise.setText(app.getEntreprise().getNomEntreprise());
         brancheEntreprise.setText(app.getEntreprise().getBranche());
-        nbSalariesEntreprise.setText(app.getEntreprise().getNbSalaries());
+        nbSalariesEntreprise.setText(String.valueOf(app.getEntreprise().getNbSalaries()));
     }
 
     @Nullable
