@@ -67,14 +67,9 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.infos_profil_fragment, container, false);
         initialize(v);
-        try {
-            Apprenti app = profilForm.getInfosPersonnelles();
-            updateTextviews(app);
-
-        } catch (Exception e) {
-            Intent intent = new Intent(v.getContext(), LoginActivity.class);
-            startActivity(intent);
-        }
+        //Apprenti app = profilForm.getInfosPersonnelles();
+        Apprenti app = (Apprenti) getArguments().get("Apprenti");
+        updateTextviews(app);
 
         return v;
     }

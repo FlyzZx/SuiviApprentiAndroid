@@ -1,7 +1,9 @@
 package projet.suiviapprenti.views.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,9 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import projet.suiviapprenti.R;
+import projet.suiviapprenti.beans.Apprenti;
+import projet.suiviapprenti.utils.ProfilForm;
+import projet.suiviapprenti.views.fragments.ParcoursFragment;
+import projet.suiviapprenti.views.fragments.ProfilFragment;
 
 public class LoggedActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    ProfilForm profilForm;
+    Apprenti app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +29,6 @@ public class LoggedActivity extends AppCompatActivity
         setContentView(R.layout.activity_logged_actiivity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -33,6 +40,22 @@ public class LoggedActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        profilForm = new ProfilForm();
+        try {
+            app = profilForm.getInfosPersonnelles();
+            this.getIntent().putExtra("Apprenti", app);
+
+            if(findViewById(R.id.fragment_container_profil) != null) {
+                ProfilFragment profilFrag = new ProfilFragment();
+                profilFrag.setArguments(getIntent().getExtras());
+                getFragmentManager().beginTransaction().add(R.id.fragment_container_profil, profilFrag).commit();
+            }
+        } catch (Exception e) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     @Override
@@ -53,9 +76,13 @@ public class LoggedActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.menu_profil) {
-            // Handle the camera action
+            ProfilFragment profilFrag = new ProfilFragment();
+            profilFrag.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, profilFrag).commit();
         } else if (id == R.id.menu_parcours) {
-
+            ParcoursFragment parcoursFrag = new ParcoursFragment();
+            parcoursFrag.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, parcoursFrag).commit();
         } else if (id == R.id.menu_cursus) {
 
         } else if (id == R.id.menu_logoff) {

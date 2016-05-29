@@ -12,12 +12,10 @@
     tools:context=".views.activitys.LoggedActivity"
     tools:showIn="@layout/app_bar_logged_actiivity">
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="projet.suiviapprenti.views.fragments.ProfilFragment"
-        android:id="@+id/fragment"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        tools:layout="@layout/infos_profil_fragment" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/fragment_container_profil"></FrameLayout>
 </RelativeLayout>
