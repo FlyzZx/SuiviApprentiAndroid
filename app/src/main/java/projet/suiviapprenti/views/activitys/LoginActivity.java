@@ -19,7 +19,7 @@ import projet.suiviapprenti.utils.LoginForm;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     EditText edtMail, edtPassword;
-    Button btnConnexion, btndebug;
+    Button btnConnexion;
     LoginForm loginForm;
 
 
@@ -32,8 +32,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtMail = (EditText) findViewById(R.id.editTextLogin_mail);
         edtPassword = (EditText) findViewById(R.id.editTextLogin_password);
         btnConnexion.setOnClickListener(this);
-        btndebug = (Button) findViewById(R.id.button);
-        btndebug.setOnClickListener(this);
     }
 
     @Override
@@ -48,17 +46,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Snackbar.make(v, e.getMessage(), Snackbar.LENGTH_LONG).show();
                 }
                 break;
-            case R.id.button:
-                try {
-                    String jsonProfil = new SimpleHTTPGet().execute("http://192.168.0.6:8080/testRestAndroid/rest/profil/infosPersonnelles").get();
-                    JSONDataParse parser = new JSONDataParse();
-                    Apprenti app = parser.getApprenti(jsonProfil);
-                    Snackbar.make(v, app.getPrenom(), Snackbar.LENGTH_LONG).show();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
         }
 
 
