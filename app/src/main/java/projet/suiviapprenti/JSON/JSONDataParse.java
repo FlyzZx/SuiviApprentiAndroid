@@ -24,4 +24,16 @@ public class JSONDataParse {
 
         return app;
     }
+
+    public Boolean isConnected(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        Boolean connected = null;
+        try {
+            connected = mapper.readValue(json, Boolean.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return connected;
+    }
 }
