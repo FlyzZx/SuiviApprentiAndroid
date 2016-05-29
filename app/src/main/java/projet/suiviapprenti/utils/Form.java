@@ -7,7 +7,7 @@ import projet.suiviapprenti.JSON.JSONDataParse;
  */
 public class Form {
     protected JSONDataParse parser;
-    protected static final String IP_REST  = "192.168.0.6:8080/testRestAndroid/rest";
+    protected static final String IP_REST  = "82.240.139.63:8080/testRestAndroid/rest";
 
     public Form() {
         parser = new JSONDataParse();
