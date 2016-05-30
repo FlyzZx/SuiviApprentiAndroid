@@ -3,9 +3,14 @@ package projet.suiviapprenti.views.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -34,7 +39,7 @@ public class CursusFragment extends Fragment {
         cursus.addAll(app.getCursusformations());
         adapter = new CursusAdapter(v.getContext(), cursus);
         listCursus.setAdapter(adapter);
-
+        registerForContextMenu(listCursus);
     }
 
     @Nullable
@@ -43,5 +48,31 @@ public class CursusFragment extends Fragment {
         View v = inflater.inflate(R.layout.cursusformation_fragment, container, false);
         initialize(v);
         return v;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        AdapterView.AdapterContextMenuInfo infos = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        Cursusformation selectedItem = cursus.get(infos.position);
+        menu.setHeaderTitle(selectedItem.getType());
+        inflater.inflate(R.menu.contextmenu_list, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo infos = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        Cursusformation selectedCursus = cursus.get(infos.position);
+        switch(item.getItemId()) {
+            case R.id.contextmenu_modifier:
+                Snackbar.make(getView(), "Modifier " + selectedCursus.getType(), Snackbar.LENGTH_LONG).show();
+                return true;
+            case R.id.contextmenu_supprimer:
+                Snackbar.make(getView(), "Supprimer " + selectedCursus.getType(), Snackbar.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }

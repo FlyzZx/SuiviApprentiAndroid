@@ -6,4 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="editer_profil">Modifier le profil</string>
+
+    <string name="contextmenu_modifier">Modifier</string>
+    <string name="contextmenu_supprimer">Supprimer</string>
 </resources>
