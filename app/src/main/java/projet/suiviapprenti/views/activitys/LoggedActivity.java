@@ -49,7 +49,7 @@ public class LoggedActivity extends AppCompatActivity
         if(findViewById(R.id.fragment_container_profil) != null) {
             ProfilFragment profilFrag = new ProfilFragment();
             profilFrag.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction().add(R.id.fragment_container_profil, profilFrag).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, profilFrag).commit();
         }
 
     }
@@ -63,8 +63,9 @@ public class LoggedActivity extends AppCompatActivity
     }
 
     private void reLog() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);*/
+        finish();
     }
 
     @Override
@@ -98,7 +99,8 @@ public class LoggedActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, cursusFrag).commit();
 
         } else if (id == R.id.menu_logoff) {
-
+            //TODO ENNVOI REQUETE LOGOFF
+            reLog();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
