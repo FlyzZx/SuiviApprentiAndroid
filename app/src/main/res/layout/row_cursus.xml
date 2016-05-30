@@ -7,20 +7,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView_row_parcours_nomEntreprise"
+        android:id="@+id/textView_cursus_type"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView_row_parcours_fonction" />
+        android:id="@+id/textView_cursus_complement" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView_row_parcours_annee"
+        android:id="@+id/textView_cursus_annee"
         android:textStyle="italic" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_cursus_obtention" />
 </LinearLayout>

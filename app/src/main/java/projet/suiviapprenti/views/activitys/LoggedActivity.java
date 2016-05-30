@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import projet.suiviapprenti.R;
 import projet.suiviapprenti.beans.Apprenti;
 import projet.suiviapprenti.utils.ProfilForm;
+import projet.suiviapprenti.views.fragments.CursusFragment;
 import projet.suiviapprenti.views.fragments.ParcoursFragment;
 import projet.suiviapprenti.views.fragments.ProfilFragment;
 
@@ -42,20 +43,28 @@ public class LoggedActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
         profilForm = new ProfilForm();
-        try {
-            app = profilForm.getInfosPersonnelles();
+            updateApprenti();
             this.getIntent().putExtra("Apprenti", app);
 
-            if(findViewById(R.id.fragment_container_profil) != null) {
-                ProfilFragment profilFrag = new ProfilFragment();
-                profilFrag.setArguments(getIntent().getExtras());
-                getFragmentManager().beginTransaction().add(R.id.fragment_container_profil, profilFrag).commit();
-            }
-        } catch (Exception e) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+        if(findViewById(R.id.fragment_container_profil) != null) {
+            ProfilFragment profilFrag = new ProfilFragment();
+            profilFrag.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().add(R.id.fragment_container_profil, profilFrag).commit();
         }
 
+    }
+
+    private void updateApprenti() {
+        try {
+            app = profilForm.getInfosPersonnelles();
+        } catch (Exception e) {
+            reLog();
+        }
+    }
+
+    private void reLog() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -74,7 +83,7 @@ public class LoggedActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        updateApprenti();
         if (id == R.id.menu_profil) {
             ProfilFragment profilFrag = new ProfilFragment();
             profilFrag.setArguments(getIntent().getExtras());
@@ -84,6 +93,9 @@ public class LoggedActivity extends AppCompatActivity
             parcoursFrag.setArguments(getIntent().getExtras());
             getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, parcoursFrag).commit();
         } else if (id == R.id.menu_cursus) {
+            CursusFragment cursusFrag = new CursusFragment();
+            cursusFrag.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, cursusFrag).commit();
 
         } else if (id == R.id.menu_logoff) {
 
