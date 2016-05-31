@@ -89,7 +89,20 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
 
         switch(id) {
             case R.id.button_profil_validModif:
-                profilForm.updateApprenti(getValuesEdt());
+                String ret = profilForm.updateApprenti(getValuesEdt());
+                if(ret.equals("")) {
+                    ProfilFragment profilFragment = new ProfilFragment();
+                    try {
+                        app = profilForm.getInfosPersonnelles();    //Mise à jour de l'apprenti
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Apprenti", app);
+                        profilFragment.setArguments(bundle);
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, profilFragment).commit();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
                 break;
             default:
                 break;

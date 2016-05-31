@@ -39,7 +39,7 @@ public class ProfilForm extends Form {
         return app;
     }
 
-    public void updateApprenti(List<String> values) {
+    public String updateApprenti(List<String> values) {
         Map<String, String> params = new HashMap<>();
         String jsonRet = null;
         params.put(CHAMP_RUE, values.get(0));
@@ -61,5 +61,7 @@ public class ProfilForm extends Form {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        return jsonRet;
     }
 }
