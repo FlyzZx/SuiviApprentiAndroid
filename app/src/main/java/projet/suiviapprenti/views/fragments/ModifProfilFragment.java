@@ -10,8 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
 import projet.suiviapprenti.R;
 import projet.suiviapprenti.beans.Apprenti;
+import projet.suiviapprenti.networks.SimpleHTTPPost;
+import projet.suiviapprenti.utils.ProfilForm;
 
 /**
  * Created by nicol on 31/05/2016.
@@ -20,8 +28,11 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
     EditText edtRue, edtVille, edtCodePostal, edtMail, edtTel, edtMobile, edtSite, edtMission;
     Button btnValidModif;
     Apprenti app;
+    ProfilForm profilForm;
 
     private void initialize(View v) {
+
+        profilForm = new ProfilForm();
 
         edtRue = (EditText) v.findViewById(R.id.editText_profil_rue);
         edtVille = (EditText) v.findViewById(R.id.editText_profil_ville);
@@ -47,6 +58,20 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
         edtMission.setText(app.getMissionPrincipale());
     }
 
+    private List<String> getValuesEdt() {
+        List<String> values = new ArrayList<>();
+        values.add(edtRue.getText().toString());
+        values.add(edtVille.getText().toString());
+        values.add(edtCodePostal.getText().toString());
+        values.add(edtMail.getText().toString());
+        values.add(edtTel.getText().toString());
+        values.add(edtMobile.getText().toString());
+        values.add(edtSite.getText().toString());
+        values.add(edtMission.getText().toString());
+
+        return values;
+    }
+
 
     @Nullable
     @Override
@@ -64,7 +89,7 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
 
         switch(id) {
             case R.id.button_profil_validModif:
-                Snackbar.make(v, "VALIDATION MODIFICATIONS", Snackbar.LENGTH_LONG);
+                profilForm.updateApprenti(getValuesEdt());
                 break;
             default:
                 break;
