@@ -16,5 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView_cursus"
-        android:layout_below="@+id/textView17" />
+        android:layout_below="@+id/textView17"
+        android:layout_above="@+id/button_ajoutCursus" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter un cursus"
+        android:id="@+id/button_ajoutCursus"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
