@@ -24,6 +24,7 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
     ProfilForm profilForm;
     TextView nom, prenom, classe, naissance, adresse, mail, tel, site, mission, nomEntreprise, brancheEntreprise, nbSalariesEntreprise;
     Button btnModif;
+    Apprenti app;
 
     private void initialize(View v) {
         profilForm = new ProfilForm();
@@ -45,7 +46,7 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
         nbSalariesEntreprise = (TextView) v.findViewById(R.id.textView_infosProfil_nbSalariesEntreprise);
     }
 
-    private void updateTextviews(Apprenti app) {
+    private void updateTextviews() {
         //MAJ TEXTVIEWS
         nom.setText(app.getNom());
         prenom.setText(app.getPrenom());
@@ -67,9 +68,8 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.infos_profil_fragment, container, false);
         initialize(v);
-        //Apprenti app = profilForm.getInfosPersonnelles();
-        Apprenti app = (Apprenti) getArguments().get("Apprenti");
-        updateTextviews(app);
+        app = (Apprenti) getArguments().get("Apprenti");
+        updateTextviews();
 
         return v;
     }
@@ -81,6 +81,9 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
         switch (id) {
             case R.id.button_infosProfil_modifier:
                 Snackbar.make(v, "CALLBACK MODIFIER PROFIL", Snackbar.LENGTH_LONG).show();
+                ModifProfilFragment modifFragment = new ModifProfilFragment();
+                modifFragment.setArguments(getArguments());
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, modifFragment).commit();
                 break;
 
             default:

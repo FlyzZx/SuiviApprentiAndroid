@@ -9,8 +9,9 @@ import projet.suiviapprenti.networks.SimpleHTTPGet;
  * Created by nicol on 29/05/2016.
  */
 public class LoginForm extends Form{
-    private static final String PATH_LOGIN   = "/login/";
-    private static final String EXC_LOG      = "Email ou mot de passe invalide";
+    private static final String PATH_LOGIN      = "/login/";
+    private static final String PATH_LOGOFF     = PATH_LOGIN + "/logoff";
+    private static final String EXC_LOG         = "Email ou mot de passe invalide";
 
     public LoginForm() {
 
@@ -31,6 +32,16 @@ public class LoginForm extends Form{
             throw new Exception(e.getMessage());
         } catch (ExecutionException e) {
             throw new Exception(e.getMessage());
+        }
+    }
+
+    public void sendDisconnection() {
+        try {
+            String ret = new SimpleHTTPGet().execute("http://" + IP_REST + PATH_LOGOFF).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
     }
 }
