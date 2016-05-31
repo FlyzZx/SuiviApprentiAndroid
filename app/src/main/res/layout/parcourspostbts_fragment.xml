@@ -18,6 +18,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView_parcours"
         android:layout_below="@+id/textView16"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/button_ajoutParcours" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_ajoutParcours"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Ajouter un parcours" />
 
 </RelativeLayout>
