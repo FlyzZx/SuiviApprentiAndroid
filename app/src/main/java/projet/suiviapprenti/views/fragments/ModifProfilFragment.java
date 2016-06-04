@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import projet.suiviapprenti.JSON.JSONDataParse;
 import projet.suiviapprenti.R;
 import projet.suiviapprenti.beans.Apprenti;
 import projet.suiviapprenti.networks.SimpleHTTPPost;
@@ -102,6 +103,13 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
                         e.printStackTrace();
                     }
 
+                } else {
+                    JSONDataParse jsonParser = new JSONDataParse();
+                    try {
+                        HashMap<String, String> erreurs = jsonParser.getErreurs(ret);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             default:
