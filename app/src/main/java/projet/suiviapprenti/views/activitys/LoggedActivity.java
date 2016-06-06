@@ -1,15 +1,15 @@
 package projet.suiviapprenti.views.activitys;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import projet.suiviapprenti.R;
@@ -52,7 +52,10 @@ public class LoggedActivity extends AppCompatActivity
         if(findViewById(R.id.fragment_container_profil) != null) {
             ProfilFragment profilFrag = new ProfilFragment();
             profilFrag.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, profilFrag).commit();
+            //Transaction
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container_profil, profilFrag);
+            ft.commit();
         }
 
     }
@@ -87,20 +90,33 @@ public class LoggedActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fm = getSupportFragmentManager();
         updateApprenti();
         if (id == R.id.menu_profil) {
             ProfilFragment profilFrag = new ProfilFragment();
             profilFrag.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, profilFrag).commit();
+
+            //Transaction
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container_profil, profilFrag);
+            ft.addToBackStack(null);
+            ft.commit();
         } else if (id == R.id.menu_parcours) {
             ParcoursFragment parcoursFrag = new ParcoursFragment();
             parcoursFrag.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, parcoursFrag).commit();
+
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container_profil, parcoursFrag);
+            ft.addToBackStack(null);
+            ft.commit();
         } else if (id == R.id.menu_cursus) {
             CursusFragment cursusFrag = new CursusFragment();
             cursusFrag.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, cursusFrag).commit();
 
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container_profil, cursusFrag);
+            ft.addToBackStack(null);
+            ft.commit();
         } else if (id == R.id.menu_logoff) {
             loginForm.sendDisconnection();
             reLog();

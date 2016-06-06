@@ -1,6 +1,6 @@
 package projet.suiviapprenti.views.fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
