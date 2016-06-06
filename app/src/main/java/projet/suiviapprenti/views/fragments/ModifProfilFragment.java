@@ -125,7 +125,7 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
 
     private void showErrors(View v, HashMap<String, String> erreurs) {
         Iterator keys = erreurs.keySet().iterator();
-        Toast.makeText(v.getContext(), "Il y a des erreurs de saisies", Toast.LENGTH_LONG).show();
+        Toast.makeText(v.getContext(), "Certains champs sont érronés", Toast.LENGTH_LONG).show();
         while(keys.hasNext()) {
             switch((String) keys.next()) {
                 case ProfilForm.CHAMP_RUE:

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -27,12 +28,13 @@ import projet.suiviapprenti.views.adapters.ParcoursAdapter;
 /**
  * Created by nicol on 29/05/2016.
  */
-public class ParcoursFragment extends Fragment {
+public class ParcoursFragment extends Fragment implements View.OnClickListener {
 
     ListView listParcours;
     ParcoursAdapter adapter;
     Apprenti app;
     List<ParcoursPostBts> parcours;
+    Button btn_ajout;
 
     private void initialize(View v) {
         app = (Apprenti) getArguments().get("Apprenti");
@@ -43,6 +45,9 @@ public class ParcoursFragment extends Fragment {
         listParcours.setAdapter(adapter);
         //Activation du menu contextuel
         registerForContextMenu(listParcours);
+
+        btn_ajout = (Button) v.findViewById(R.id.button_ajoutParcours);
+        btn_ajout.setOnClickListener(this);
     }
 
     @Nullable
@@ -76,6 +81,19 @@ public class ParcoursFragment extends Fragment {
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch(id) {
+            case R.id.button_ajoutParcours:
+                AddParcoursFragment addPF = new AddParcoursFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, addPF).commit();
+                break;
+            default:
+                break;
         }
     }
 }
