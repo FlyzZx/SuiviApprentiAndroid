@@ -1,6 +1,9 @@
 package projet.suiviapprenti.views.fragments;
 
 import android.app.Fragment;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -9,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -107,6 +112,7 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
                     JSONDataParse jsonParser = new JSONDataParse();
                     try {
                         HashMap<String, String> erreurs = jsonParser.getErreurs(ret);
+                        showErrors(v, erreurs);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -114,6 +120,42 @@ public class ModifProfilFragment extends Fragment implements View.OnClickListene
                 break;
             default:
                 break;
+        }
+    }
+
+    private void showErrors(View v, HashMap<String, String> erreurs) {
+        Iterator keys = erreurs.keySet().iterator();
+        Toast.makeText(v.getContext(), "Il y a des erreurs de saisies", Toast.LENGTH_LONG).show();
+        while(keys.hasNext()) {
+            switch((String) keys.next()) {
+                case ProfilForm.CHAMP_RUE:
+                    edtRue.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_VILLE:
+                    edtVille.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_POSTAL:
+                    edtCodePostal.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_MAIL:
+                    edtMail.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_TEL:
+                    edtTel.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_MOBILE:
+                    edtMobile.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_SITE:
+                    edtSite.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                case ProfilForm.CHAMP_M_PRINCIP:
+                    edtMission.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                    break;
+                default:
+
+                    break;
+            }
         }
     }
 }

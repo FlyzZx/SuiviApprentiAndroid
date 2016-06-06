@@ -43,7 +43,7 @@ public class JSONDataParse {
         HashMap<String, String> erreurs = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.readValue(json, erreurs.getClass());
+            erreurs = mapper.readValue(json, erreurs.getClass());
         } catch (IOException e) {
             throw new Exception(ERR_PARSE);
         }
