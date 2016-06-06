@@ -56,7 +56,9 @@
         android:layout_below="@+id/textView22"
         android:layout_alignParentStart="true"
         android:hint="Nom entreprise"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:inputType="textAutoComplete"
+        android:nextFocusDown="@+id/editText_parcours_brancheEnt" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -65,7 +67,9 @@
         android:hint="Branche"
         android:layout_below="@+id/autoCompleteTextView_parcours_nomEnt"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView22" />
+        android:layout_alignEnd="@+id/textView22"
+        android:inputType="text"
+        android:nextFocusDown="@+id/editText_parcours_nbSalariesEnt" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,7 +78,9 @@
         android:hint="Nb salariés"
         android:layout_alignTop="@+id/editText_parcours_brancheEnt"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/editText_parcours_brancheEnt" />
+        android:layout_toEndOf="@+id/editText_parcours_brancheEnt"
+        android:inputType="number"
+        android:numeric="integer" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -84,7 +90,8 @@
         android:layout_below="@+id/textView21"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/editText_parcours_nbSalariesEnt"
-        android:layout_alignEnd="@+id/editText_parcours_nbSalariesEnt" />
+        android:layout_alignEnd="@+id/editText_parcours_nbSalariesEnt"
+        android:inputType="textImeMultiLine" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,7 +100,9 @@
         android:hint="Ville"
         android:layout_below="@+id/editText_parcours_rueEnt"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/editText_parcours_nbSalariesEnt" />
+        android:layout_toStartOf="@+id/editText_parcours_nbSalariesEnt"
+        android:nextFocusDown="@+id/editText_parcours_codePostalEnt"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -102,7 +111,9 @@
         android:hint="Code postal"
         android:layout_below="@+id/editText_parcours_rueEnt"
         android:layout_alignEnd="@+id/editText_parcours_nbSalariesEnt"
-        android:layout_toEndOf="@+id/textView21" />
+        android:layout_toEndOf="@+id/textView21"
+        android:inputType="number"
+        android:nextFocusDown="@+id/editText_parcours_telEnt" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -111,7 +122,9 @@
         android:layout_below="@+id/editText_parcours_villeEnt"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/editText_parcours_codePostalEnt"
-        android:hint="Telephone" />
+        android:hint="Telephone"
+        android:nextFocusDown="@+id/editText_parcours_mobileEnt"
+        android:inputType="phone" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -120,7 +133,9 @@
         android:hint="Mobile"
         android:layout_above="@+id/editText_parcours_mailEnt"
         android:layout_alignEnd="@+id/editText_parcours_codePostalEnt"
-        android:layout_toEndOf="@+id/editText_parcours_telEnt" />
+        android:layout_toEndOf="@+id/editText_parcours_telEnt"
+        android:inputType="phone"
+        android:nextFocusDown="@+id/editText_parcours_mailEnt" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -129,7 +144,9 @@
         android:hint="Email"
         android:layout_below="@+id/editText_parcours_telEnt"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/editText_parcours_villeEnt" />
+        android:layout_alignEnd="@+id/editText_parcours_villeEnt"
+        android:nextFocusDown="@+id/editText_parcours_siteEnt"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -138,7 +155,8 @@
         android:hint="Site"
         android:layout_alignTop="@+id/editText_parcours_mailEnt"
         android:layout_alignEnd="@+id/editText_parcours_mobileEnt"
-        android:layout_toEndOf="@+id/editText_parcours_telEnt" />
+        android:layout_toEndOf="@+id/editText_parcours_telEnt"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="wrap_content"

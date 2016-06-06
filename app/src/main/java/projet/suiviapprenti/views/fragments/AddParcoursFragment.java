@@ -17,6 +17,8 @@ import projet.suiviapprenti.R;
  */
 public class AddParcoursFragment extends Fragment {
     Spinner fonctions;
+
+
     ArrayAdapter spAdapt;
     String[] listFonctions = {"Développeur", "Ingénieur", "Webmaster"};
 
