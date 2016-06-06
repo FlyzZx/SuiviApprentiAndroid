@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Information entreprise"
+        android:text="Information entreprise  "
         android:id="@+id/textView22"
         android:textColor="@color/colorAccent"
         android:layout_below="@+id/editText_parcours_dateDebut"
@@ -48,5 +48,115 @@
         android:layout_alignParentStart="true"
         android:hint="Date de début"
         android:layout_below="@+id/spinner_parcours_fonction" />
+
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/autoCompleteTextView_parcours_nomEnt"
+        android:layout_below="@+id/textView22"
+        android:layout_alignParentStart="true"
+        android:hint="Nom entreprise"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_brancheEnt"
+        android:hint="Branche"
+        android:layout_below="@+id/autoCompleteTextView_parcours_nomEnt"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/textView22" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_nbSalariesEnt"
+        android:hint="Nb salariés"
+        android:layout_alignTop="@+id/editText_parcours_brancheEnt"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/editText_parcours_brancheEnt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_rueEnt"
+        android:hint="Rue"
+        android:layout_below="@+id/textView21"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editText_parcours_nbSalariesEnt"
+        android:layout_alignEnd="@+id/editText_parcours_nbSalariesEnt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_villeEnt"
+        android:hint="Ville"
+        android:layout_below="@+id/editText_parcours_rueEnt"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editText_parcours_nbSalariesEnt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_codePostalEnt"
+        android:hint="Code postal"
+        android:layout_below="@+id/editText_parcours_rueEnt"
+        android:layout_alignEnd="@+id/editText_parcours_nbSalariesEnt"
+        android:layout_toEndOf="@+id/textView21" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_telEnt"
+        android:layout_below="@+id/editText_parcours_villeEnt"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editText_parcours_codePostalEnt"
+        android:hint="Telephone" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_mobileEnt"
+        android:hint="Mobile"
+        android:layout_above="@+id/editText_parcours_mailEnt"
+        android:layout_alignEnd="@+id/editText_parcours_codePostalEnt"
+        android:layout_toEndOf="@+id/editText_parcours_telEnt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_mailEnt"
+        android:hint="Email"
+        android:layout_below="@+id/editText_parcours_telEnt"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/editText_parcours_villeEnt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_parcours_siteEnt"
+        android:hint="Site"
+        android:layout_alignTop="@+id/editText_parcours_mailEnt"
+        android:layout_alignEnd="@+id/editText_parcours_mobileEnt"
+        android:layout_toEndOf="@+id/editText_parcours_telEnt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Coordonnées entreprise"
+        android:id="@+id/textView21"
+        android:layout_below="@+id/editText_parcours_brancheEnt"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter le parcours"
+        android:id="@+id/button_addParcours_add"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/editText_parcours_siteEnt" />
 
 </RelativeLayout>

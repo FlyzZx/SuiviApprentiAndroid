@@ -11,6 +11,7 @@
         android:name="projet.suiviapprenti.SuiviApprenti">
         <activity
             android:name=".views.activitys.LoginActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +21,10 @@
         </activity>
         <activity
             android:name=".views.activitys.LoggedActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_logged_actiivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
