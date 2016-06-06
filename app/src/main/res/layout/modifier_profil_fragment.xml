@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Modification du profil"
+        android:id="@+id/textView18"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorAccent" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignTop="@+id/editText_profil_rue"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/editText_profil_rue"
+        android:layout_below="@+id/textView18"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:hint="Rue" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:id="@+id/editText_profil_ville"
+        android:layout_below="@+id/editText_profil_rue"
+        android:layout_centerHorizontal="true"
+        android:hint="Ville" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText_profil_codePostal"
+        android:layout_below="@+id/editText_profil_ville"
+        android:layout_centerHorizontal="true"
+        android:hint="Code postal" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText_profil_mail"
+        android:layout_below="@+id/editText_profil_codePostal"
+        android:layout_centerHorizontal="true"
+        android:hint="Adresse e-mail" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editText_profil_phone"
+        android:layout_below="@+id/editText_profil_mail"
+        android:layout_centerHorizontal="true"
+        android:hint="Téléphone" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editText_profil_mobile"
+        android:layout_below="@+id/editText_profil_phone"
+        android:layout_centerHorizontal="true"
+        android:hint="Téléphone mobile" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_profil_site"
+        android:layout_below="@+id/editText_profil_mobile"
+        android:layout_centerHorizontal="true"
+        android:hint="Site web" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_profil_mission"
+        android:layout_below="@+id/editText_profil_site"
+        android:layout_centerHorizontal="true"
+        android:hint="Mission principale" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider les modifications"
+        android:id="@+id/button_profil_validModif"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

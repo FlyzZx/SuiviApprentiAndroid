@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import projet.suiviapprenti.R;
 import projet.suiviapprenti.beans.Apprenti;
+import projet.suiviapprenti.utils.LoginForm;
 import projet.suiviapprenti.utils.ProfilForm;
 import projet.suiviapprenti.views.fragments.CursusFragment;
 import projet.suiviapprenti.views.fragments.ParcoursFragment;
@@ -22,6 +23,7 @@ import projet.suiviapprenti.views.fragments.ProfilFragment;
 public class LoggedActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ProfilForm profilForm;
+    LoginForm loginForm;
     Apprenti app;
 
     @Override
@@ -42,6 +44,7 @@ public class LoggedActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        loginForm = new LoginForm();
         profilForm = new ProfilForm();
             updateApprenti();
             this.getIntent().putExtra("Apprenti", app);
@@ -99,7 +102,7 @@ public class LoggedActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.fragment_container_profil, cursusFrag).commit();
 
         } else if (id == R.id.menu_logoff) {
-            //TODO ENNVOI REQUETE LOGOFF
+            loginForm.sendDisconnection();
             reLog();
         }
 
