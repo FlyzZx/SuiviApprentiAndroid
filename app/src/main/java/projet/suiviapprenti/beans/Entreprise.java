@@ -15,13 +15,11 @@ import projet.suiviapprenti.JSON.JSONViews;
 
 public class Entreprise implements java.io.Serializable {
 
-	private Integer identreprise;
-	private Coordonnees coordonnees;
-	@JsonView(JSONViews.InfoProfil.class) private String nomEntreprise;
-	@JsonView(JSONViews.InfoProfil.class) private String branche;
-	@JsonView(JSONViews.InfoProfil.class) private int nbSalaries;
-	private Set<ParcoursPostBts> parcoursPostBtses = new HashSet<ParcoursPostBts>(0);
-	private Set<Apprenti> apprentis = new HashSet<Apprenti>(0);
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private Integer identreprise;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private Coordonnees coordonnees;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String nomEntreprise;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String branche;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private int nbSalaries;
 
 	public Entreprise() {
 	}
@@ -39,8 +37,6 @@ public class Entreprise implements java.io.Serializable {
 		this.nomEntreprise = nomEntreprise;
 		this.branche = branche;
 		this.nbSalaries = nbSalaries;
-		this.parcoursPostBtses = parcoursPostBtses;
-		this.apprentis = apprentis;
 	}
 
 	public Integer getIdentreprise() {
@@ -84,20 +80,5 @@ public class Entreprise implements java.io.Serializable {
 		this.nbSalaries = nbSalaries;
 	}
 
-	public Set<ParcoursPostBts> getParcoursPostBtses() {
-		return this.parcoursPostBtses;
-	}
-
-	public void setParcoursPostBtses(Set<ParcoursPostBts> parcoursPostBtses) {
-		this.parcoursPostBtses = parcoursPostBtses;
-	}
-
-	public Set<Apprenti> getApprentis() {
-		return this.apprentis;
-	}
-
-	public void setApprentis(Set<Apprenti> apprentis) {
-		this.apprentis = apprentis;
-	}
 
 }

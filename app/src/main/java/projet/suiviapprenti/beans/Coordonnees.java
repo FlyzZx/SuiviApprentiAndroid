@@ -16,15 +16,13 @@ import projet.suiviapprenti.JSON.JSONViews;
 public class Coordonnees implements java.io.Serializable {
 
 	private Integer idcoordonnees;
-	@JsonView(JSONViews.InfoProfil.class) private String rue;
-	@JsonView(JSONViews.InfoProfil.class) private String ville;
-	@JsonView(JSONViews.InfoProfil.class) private String codePostal;
-	@JsonView(JSONViews.InfoProfil.class) private String telephone;
-	@JsonView(JSONViews.InfoProfil.class) private String mobile;
-	@JsonView(JSONViews.InfoProfil.class) private String email;
-	@JsonView(JSONViews.InfoProfil.class) private String site;
-	private Set<Apprenti> apprentis = new HashSet<Apprenti>(0);
-	private Set<Entreprise> entreprises = new HashSet<Entreprise>(0);
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String rue;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String ville;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String codePostal;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String telephone;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String mobile;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String email;
+	@JsonView(JSONViews.AutocompleteEntreprise.class) private String site;
 
 	public Coordonnees() {
 	}
@@ -49,8 +47,6 @@ public class Coordonnees implements java.io.Serializable {
 		this.mobile = mobile;
 		this.email = email;
 		this.site = site;
-		this.apprentis = apprentis;
-		this.entreprises = entreprises;
 	}
 
 
@@ -116,22 +112,6 @@ public class Coordonnees implements java.io.Serializable {
 
 	public void setSite(String site) {
 		this.site = site;
-	}
-
-	public Set<Apprenti> getApprentis() {
-		return this.apprentis;
-	}
-
-	public void setApprentis(Set<Apprenti> apprentis) {
-		this.apprentis = apprentis;
-	}
-
-	public Set<Entreprise> getEntreprises() {
-		return this.entreprises;
-	}
-
-	public void setEntreprises(Set<Entreprise> entreprises) {
-		this.entreprises = entreprises;
 	}
 
 }
